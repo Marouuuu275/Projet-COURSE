@@ -19,20 +19,12 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
     <h2>Welcome to My Resume Registry</h2>
 
-    <!-- Lien de connexion toujours visible si pas connecté -->
+    <!-- Lien de connexion visible si pas connecté -->
     <?php if (!isset($_SESSION['name'])): ?>
         <p><a href="login.php">Please log in</a></p>
     <?php else: ?>
         <p><a href="logout.php">Logout</a></p>
     <?php endif; ?>
-
-    <?php
-    // Message de succès
-    if (isset($_SESSION['success'])) {
-        echo '<p style="color: green;">' . htmlentities($_SESSION['success']) . "</p>\n";
-        unset($_SESSION['success']);
-    }
-    ?>
 
     <?php
     // Tableau des profils
@@ -70,8 +62,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo '<p><a href="add.php">Add New Entry</a></p>';
     }
     ?>
-
-    <p><b>Note:</b> Your implementation should retain data across multiple logout/login sessions.</p>
 </div>
 </body>
 </html>
